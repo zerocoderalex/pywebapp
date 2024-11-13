@@ -31,7 +31,7 @@ def edit_profile():
         user['email'] = form.email.data
         user['password'] = form.password.data
         flash('Профиль успешно обновлен!', 'success')
-        return redirect(url_for('edit_profile'))
+        return redirect(url_for('/'))
 
     # Заполнение формы данными пользователя
     form.name.data = user['name']
