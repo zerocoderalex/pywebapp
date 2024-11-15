@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Случайные цитаты</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+        .quote {
+            font-size: 24px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Случайные цитаты</h1>
+    <div class="quote" id="quote">{{ quote.content }} — {{ quote.author }}</div>
+    <button id="new-quote">Получить новую цитату</button>
+
+    <script>
+        document.getElementById('new-quote').addEventListener('click', async () => {
+            const response = await fetch('/new_quote');
+            const data = await response.json();
+            document.getElementById('quote').innerHTML = `${data.content} — ${data.author}`;
+        });
+    </script>
+</body>
+</html>
